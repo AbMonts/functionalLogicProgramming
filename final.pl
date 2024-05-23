@@ -148,9 +148,212 @@ tratamiento_enfermedad(dolor_estomago, ["Infusion de girasol"]).
 tratamiento_enfermedad(fatiga, ["Extracto de gingseng"]).
 tratamiento_enfermedad(inflamaciones, ["Infusion de grama"]).
 
+
+
+% Base de datos de plantas y sus propiedades
+planta_propiedad(marihuana, analgesica).
+planta_propiedad(marihuana, antiinflamatoria).
+planta_propiedad(marihuana, relajante).
+planta_propiedad(mastuerzo, expectorante).
+planta_propiedad(mastuerzo, digestiva).
+planta_propiedad(matarique, cicatrizante).
+planta_propiedad(matarique, antibacteriana).
+planta_propiedad(menta, digestiva).
+planta_propiedad(menta, refrescante).
+planta_propiedad(girasol, antiinflamatoria).
+planta_propiedad(girasol, nutritiva).
+planta_propiedad(gingseng, energetica).
+planta_propiedad(gingseng, antioxidante).
+planta_propiedad(gordolobo, expectorante).
+planta_propiedad(gordolobo, antiinflamatoria).
+planta_propiedad(grama, diuretica).
+planta_propiedad(grama, depurativa).
+planta_propiedad(aloevera, hidratante).
+planta_propiedad(aloevera, cicatrizante).
+planta_propiedad(aloevera, antiinflamatoria).
+planta_propiedad(manazanilla, digestiva).
+planta_propiedad(manazanilla, calmante).
+planta_propiedad(lavanda, relajante).
+planta_propiedad(lavanda, antiseptica).
+planta_propiedad(romero, estimulante).
+planta_propiedad(romero, digestiva).
+planta_propiedad(tomillo, antiseptico).
+planta_propiedad(tomillo, expectorante).
+planta_propiedad(salvia, astringente).
+planta_propiedad(salvia, antioxidante).
+
+
+%------- pal botiquinn --------------
+
+planta(malva).
+planta(romero).
+planta(matico).
+planta(palo_de_brasil).
+planta(albahaca).
+planta(ruda).
+planta(quiebra_piedra).
+
+uso(malva, aliviar_problemas_gastrointestinales).
+uso(malva, aliviar_tos_bronquitis).
+uso(romero, estimulante_sistema_nervioso).
+uso(romero, mejorar_circulacion).
+uso(romero, aliviar_dolores_musculares).
+uso(matico, cicatrizante).
+uso(matico, antiséptico).
+uso(matico, tratar_heridas).
+uso(matico, tratar_ulceras_bucales).
+uso(palo_de_brasil, febrifugo).
+uso(palo_de_brasil, tonico).
+uso(palo_de_brasil, tratar_fiebre).
+uso(albahaca, mejorar_digestion).
+uso(albahaca, aliviar_dolores_de_cabeza).
+uso(albahaca, reducir_inflamacion).
+uso(ruda, estimulante_sistema_digestivo).
+uso(ruda, emenagoga).
+uso(ruda, aliviar_dolores_menstruales).
+uso(ruda, repelente_de_insectos).
+uso(quiebra_piedra, tratar_calculos_renales).
+uso(quiebra_piedra, tratar_infecciones_urinarias).
+uso(quiebra_piedra, tratar_hepatitis).
+uso(quiebra_piedra, tratar_diabetes).
+
+
+usos_de_planta(Planta, Usos) :-
+    findall(Uso, uso(Planta, Uso), Usos).
+
 botiquin_plantas(["Marihuana", "Menta", "Matarique", "Mastuerzo", "Girasol", "Gingseng", "Gordolobo", "Grama"]).
 
-% Predicado para obtener información específica según la pregunta y el tipo de planta
+
+%% Hechos sobre las formas de preparar una planta según el Yerberito Ilustrado %%%%%%%%%%%%%%%%%%
+
+% Cocimiento
+forma_preparacion(cocimiento, 'Cocimiento es una tecnica de extraccion de principios activos mediante ebullicion en agua. Se emplea para afecciones internas.').
+uso_preparacion(cocimiento, 'Se utiliza para problemas digestivos, respiratorios, entre otros.').
+procedimiento(cocimiento, 'Se hierve la planta en agua durante un tiempo determinado, luego se filtra y se consume el liquido resultante.').
+
+% Infusión
+forma_preparacion(infusion, 'Infusion implica verter agua caliente sobre partes de la planta para disolver compuestos.').
+uso_preparacion(infusion, 'Se utiliza para aliviar dolencias menores como insomnio, ansiedad o problemas digestivos.').
+procedimiento(infusion, 'Se vierte agua caliente sobre las partes de la planta y se deja reposar durante un tiempo determinado.').
+
+% Maceración
+forma_preparacion(maceracion, 'Maceracion consiste en dejar reposar partes de la planta en un liquido para extraer compuestos activos.').
+uso_preparacion(maceracion, 'Se utiliza para extraer componentes liposolubles o hidrosolubles de las plantas para preparar tinturas, aceites medicinales, entre otros.').
+procedimiento(maceracion, 'Se deja reposar partes de la planta en alcohol, aceite o agua durante un periodo de tiempo determinado.').
+
+% Jarabe
+forma_preparacion(jarabe, 'Jarabe combina extractos de plantas con azucar o miel para hacer remedios herbales mas apetecibles.').
+uso_preparacion(jarabe, 'Se utiliza para aliviar la tos, mejorar la congestin nasal y otras dolencias, especialmente en niños o personas con dificultades para tomar preparaciones amargas.').
+procedimiento(jarabe, 'Se combinan extractos de plantas con azucar o miel para obtener un líquido viscoso y dulce.').
+
+% Tintura
+forma_preparacion(tintura, 'Tintura es una preparacion donde los principios activos de la planta se extraen y concentran en alcohol o vinagre.').
+uso_preparacion(tintura, 'Se utiliza para conservar las propiedades medicinales de las plantas y facilitar su dosificacion durante largos periodos de tiempo.').
+procedimiento(tintura, 'Los principios activos de la planta se extraen y concentran en alcohol o vinagre.').
+
+% Jugos
+forma_preparacion(jugo, 'Jugo es la extraccion de los liquidos de la planta, generalmente mediante exprimido o trituracion.').
+uso_preparacion(jugo, 'Se utiliza para consumir los nutrientes y beneficios de la planta de forma liquida, rica en vitaminas y minerales.').
+procedimiento(jugo, 'Se extraen los líquidos de la planta mediante exprimido o trituración.').
+
+% Horchata
+forma_preparacion(horchata, 'Horchata es una bebida refrescante preparada a partir de semillas o frutos secos, como la chufa o el arroz.').
+uso_preparacion(horchata, 'Se utiliza como bebida refrescante y a veces como remedio digestivo.').
+procedimiento(horchata, 'Se remojan las semillas o frutos secos en agua, se mezclan y se filtran para obtener una bebida refrescante.').
+
+
+% ----Formas de preparación para las nuevas plantas ............ agregar mas, para poder preguntar cuales plantas se hacen de alguna manera
+
+planta(marihuana).
+planta(menta).
+planta(matarique).
+planta(mastuerzo).
+planta(girasol).
+planta(ginseng).
+planta(gordolobo).
+planta(grama).
+
+% Marihuana
+forma_preparacion(marihuana, cocimiento).
+uso_preparacion(marihuana, 'Se utiliza para problemas digestivos, respiratorios, entre otros.').
+procedimiento(marihuana, 'Se hierve la planta en agua durante un tiempo determinado, luego se filtra y se consume el liquido resultante.').
+
+% Menta
+forma_preparacion(menta, infusion).
+uso_preparacion(menta, 'Se utiliza para aliviar dolencias menores como insomnio, ansiedad o problemas digestivos.').
+procedimiento(menta, 'Se vierte agua caliente sobre las partes de la planta y se deja reposar durante un tiempo determinado.').
+
+% Matarique
+forma_preparacion(matarique, cocimiento).
+uso_preparacion(matarique, 'Se utiliza para tratar problemas digestivos y como calmante estomacal.').
+procedimiento(matarique, 'Se hierve la planta en agua durante un tiempo determinado, luego se filtra y se consume el liquido resultante.').
+
+% Mastuerzo
+forma_preparacion(mastuerzo, infusion).
+uso_preparacion(mastuerzo, 'Se utiliza como expectorante y para aliviar dolores de garganta.').
+procedimiento(mastuerzo, 'Se vierte agua caliente sobre las partes de la planta y se deja reposar durante un tiempo determinado.').
+
+% Girasol
+forma_preparacion(girasol, infusion).
+uso_preparacion(girasol, 'Se utiliza como antiinflamatorio y para aliviar dolores musculares.').
+procedimiento(girasol, 'Se vierte agua caliente sobre las partes de la planta y se deja reposar durante un tiempo determinado.').
+
+% Gingseng
+forma_preparacion(ginseng, tintura).
+uso_preparacion(ginseng, 'Se utiliza como estimulante y para mejorar la resistencia fisica y mental.').
+procedimiento(ginseng, 'Los principios activos de la planta se extraen y concentran en alcohol o vinagre.').
+
+% Gordolobo
+forma_preparacion(gordolobo, infusion).
+uso_preparacion(gordolobo, 'Se utiliza como expectorante y para aliviar la tos y los problemas respiratorios.').
+procedimiento(gordolobo, 'Se vierte agua caliente sobre las partes de la planta y se deja reposar durante un tiempo determinado.').
+
+% Grama
+forma_preparacion(grama, jugo).
+uso_preparacion(grama, 'Se utiliza como diuretico y para eliminar toxinas del organismo.').
+procedimiento(grama, 'Se extraen los liquidos de la planta mediante exprimido o trituracion.').
+
+
+% Predicados para acceder a la información
+forma_uso_preparacion(Forma, Uso) :-
+    forma_preparacion(Forma, _),
+    uso_preparacion(Forma, Uso).
+
+procedimiento_preparacion(Forma, Procedimiento) :-
+    forma_preparacion(Forma, _),
+    procedimiento(Forma, Procedimiento).
+
+
+
+
+% Relación entre plantas y enfermedades que curan
+planta_enfermedad('Marihuana', ['Dolor crónico', 'Náuseas', 'Espasmos musculares']).
+planta_enfermedad('Mastuerzo', ['Escorbuto', 'Anemia']).
+planta_enfermedad('Matarique', ['Reumatismo', 'Artritis']).
+planta_enfermedad('Menta', ['Indigestión', 'Dolor de cabeza']).
+planta_enfermedad('Girasol', ['Bronquitis', 'Asma']).
+planta_enfermedad('Gingseng', ['Fatiga', 'Estrés']).
+planta_enfermedad('Gordolobo', ['Tos', 'Gripe']).
+planta_enfermedad('Grama', ['Cálculos renales', 'Inflamación']).
+
+%% Predicados para acceder a la información
+
+% Forma de uso y preparación de una planta
+forma_uso_preparacion(Planta, Forma, Uso) :-
+    forma_preparacion(Planta, Forma),
+    uso_preparacion(Planta, Uso).
+
+% Procedimiento de preparación de una planta
+procedimiento_preparacion(Planta, Procedimiento) :-
+    forma_preparacion(Planta, _),
+    procedimiento(Planta, Procedimiento).
+
+% Despliega todas las plantas que se preparan de una forma específica
+plantas_por_forma(Forma, Plantas) :-
+    findall(Planta, forma_preparacion(Planta, Forma), Plantas).
+
+
+% ------------------- para obtener información específica según la pregunta y el tipo de planta (ventana de preguntas de alguna planta)--------------------
 obtener_respuesta('¿Es planta medicinal? (general y especifico)', Tipo, Respuesta) :-
     es_planta_medicinal(Tipo, general, General),
     es_planta_medicinal(Tipo, especifico, Especifico),
@@ -269,34 +472,217 @@ preguntas_botones(Ventana, Tipo) :-
     ],
     crear_botones(Preguntas, Ventana, 30, 100, Tipo).
 
+% ---------------------- Mostrar botones de las plantas para seleccionar ---------------------------(Esta es la ventana de inicio)
 % Mostrar botones de las plantas para seleccionar
 mostrar_botones_plantas :-
     new(VentanaPlantas, dialog('Seleccionar planta')),
-    new(BotonMarihuana, button('Marihuana')),
-    new(BotonMastuerzo, button('Mastuerzo')),
-    new(BotonMatarique, button('Matarique')),
-    new(BotonMenta, button('Menta')),
-    new(BotonGirasol, button('Girasol')),
-    new(BotonGingseng, button('Gingseng')),
-    new(BotonGordolobo, button('Gordolobo')),
-    new(BotonGrama, button('Grama')),
-    send(BotonMarihuana, message, message(@prolog, iniciar_con_planta, marihuana)),
-    send(BotonMastuerzo, message, message(@prolog, iniciar_con_planta, mastuerzo)),
-    send(BotonMatarique, message, message(@prolog, iniciar_con_planta, matarique)),
-    send(BotonMenta, message, message(@prolog, iniciar_con_planta, menta)),
-    send(BotonGirasol, message, message(@prolog, iniciar_con_planta, girasol)),
-    send(BotonGingseng, message, message(@prolog, iniciar_con_planta, gingseng)),
-    send(BotonGordolobo, message, message(@prolog, iniciar_con_planta, gordolobo)),
-    send(BotonGrama, message, message(@prolog, iniciar_con_planta, grama)),
-    send(VentanaPlantas, append, BotonMarihuana),
-    send(VentanaPlantas, append, BotonMastuerzo),
-    send(VentanaPlantas, append, BotonMatarique),
-    send(VentanaPlantas, append, BotonMenta),
-    send(VentanaPlantas, append, BotonGirasol),
-    send(VentanaPlantas, append, BotonGingseng),
-    send(VentanaPlantas, append, BotonGordolobo),
-    send(VentanaPlantas, append, BotonGrama),
+    
+    % Añadir imagen a la ventana
+    new(Imagen, bitmap('C:/Proyecto/yerbero/imagenes/yerberito.jpg')),  % Cambia 'ruta/a/tu/imagen.bmp' por la ruta de tu imagen
+    send(VentanaPlantas, append, Imagen),
+
+    new(GrupoPlantas1, dialog_group('Grupo 1', group)),
+    new(GrupoPlantas2, dialog_group('Grupo 2', group)),
+    new(BotonMarihuana, button('Marihuana', message(@prolog, iniciar_con_planta, marihuana))),
+    new(BotonMastuerzo, button('Mastuerzo', message(@prolog, iniciar_con_planta, mastuerzo))),
+    new(BotonMatarique, button('Matarique', message(@prolog, iniciar_con_planta, matarique))),
+    new(BotonMenta, button('Menta', message(@prolog, iniciar_con_planta, menta))),
+    new(BotonGirasol, button('Girasol', message(@prolog, iniciar_con_planta, girasol))),
+    new(BotonGingseng, button('Gingseng', message(@prolog, iniciar_con_planta, gingseng))),
+    new(BotonGordolobo, button('Gordolobo', message(@prolog, iniciar_con_planta, gordolobo))),
+    new(BotonGrama, button('Grama', message(@prolog, iniciar_con_planta, grama))),
+    send(GrupoPlantas1, append, BotonMarihuana),
+    send(GrupoPlantas1, append, BotonMastuerzo),
+    send(GrupoPlantas1, append, BotonMatarique),
+    send(GrupoPlantas1, append, BotonMenta),
+    send(GrupoPlantas2, append, BotonGirasol),
+    send(GrupoPlantas2, append, BotonGingseng),
+    send(GrupoPlantas2, append, BotonGordolobo),
+    send(GrupoPlantas2, append, BotonGrama),
+        
+    % Tercer grupo con otras opciones
+    new(GrupoOpciones, dialog_group('Opciones', group)),
+    new(BotonPreguntaEnfermedades, button('Pregunta enfermedades', message(@prolog, mostrar_enfermedades_planta))),
+    new(BotonPropiedades, button('Propiedades', message(@prolog, mostrar_ventana_propiedades))),
+    new(BotonBotiquin, button('Botiquin', message(@prolog, mostrar_botiquin))),
+    new(BotonComoPreparar, button('Como preparar', message(@prolog, abrir_ventana_como_preparar))),
+    new(BotonFormasPreparacion, button('Formas de preparacion', message(@prolog, mostrar_formas_preparacion))),
+    new(BotonBuscarFormasPreparar, button('Buscar formas preparar', message(@prolog, buscar_formas_preparacion))),
+    send(GrupoOpciones, append, BotonPreguntaEnfermedades),
+    send(GrupoOpciones, append, BotonPropiedades),
+    send(GrupoOpciones, append, BotonBotiquin),
+    send(GrupoOpciones, append, BotonComoPreparar),
+    send(GrupoOpciones, append, BotonFormasPreparacion),
+    send(GrupoOpciones, append, BotonBuscarFormasPreparar),
+
+    % Agregar grupos a la ventana principal
+    send(VentanaPlantas, append, GrupoPlantas1),
+    send(VentanaPlantas, append, GrupoPlantas2),
+    send(VentanaPlantas, append, GrupoOpciones),
     send(VentanaPlantas, open).
+
+% pregurntar ----------------
+
+% Predicado para manejar la acción del botón "Pregunta enfermedades"
+mostrar_enfermedades_planta :-
+    new(Dialog, dialog('Enfermedades que cura la planta')),
+    send(Dialog, append, new(TextoPlanta, text_item('Nombre de la planta'))),
+    send(Dialog, append, button('Buscar', message(@prolog, buscar_y_mostrar_enfermedades, TextoPlanta?selection))),
+    send(Dialog, append, button('Cancelar', message(Dialog, destroy))),
+    send(Dialog, open).
+
+    
+% Predicado para buscar y mostrar las enfermedades que cura la planta
+buscar_y_mostrar_enfermedades(Planta) :-
+    (   planta_enfermedad(Planta, Enfermedades) ->
+        atomic_list_concat(Enfermedades, ', ', EnfermedadesStr),
+        new(ResultDialog, dialog('Resultados de busqueda')),
+        send(ResultDialog, append, label(nombre, string('Enfermedades que cura %s: %s', Planta, EnfermedadesStr))),
+        send(ResultDialog, append, button('OK', message(ResultDialog, destroy))),
+        send(ResultDialog, open)
+    ;   send(@display, inform, 'Planta no encontrada o no se tienen registradas enfermedades que cura.')
+    ).
+
+% Predicado para manejar la acción del botón "Buscar formas preparar"
+buscar_formas_preparacion :-
+    new(Dialog, dialog('Buscar formas de preparacion')),
+    send(Dialog, append, new(Forma, text_item(forma))),
+    send(Dialog, append, button(ok, message(@prolog, buscar_y_mostrar_formas, Forma?selection))),
+    send(Dialog, append, button(cancel, message(Dialog, destroy))),
+    send(Dialog, open).
+
+% Predicado para buscar y mostrar plantas que se preparan de una forma específica
+buscar_y_mostrar_formas(Forma) :-
+    plantas_por_forma(Forma, Plantas),
+    atomic_list_concat(Plantas, ', ', PlantasString),
+    new(ResultDialog, dialog('Resultados de busqueda')),
+    send(ResultDialog, append, label(nombre, string('Plantas que se preparan con %s: %s', Forma, PlantasString))),
+    send(ResultDialog, append, button(ok, message(ResultDialog, destroy))),
+    send(ResultDialog, open).
+
+
+% Predicado para buscar cómo preparar una planta
+buscar_preparacion(Planta, Forma, Uso, Procedimiento) :-
+    forma_preparacion(Planta, Forma),
+    uso_preparacion(Planta, Uso),
+    procedimiento(Planta, Procedimiento).
+
+% ---------------- Predicado para mostrar la ventana de cómo preparar una planta  ------------(el boton de como preparar)
+abrir_ventana_como_preparar :-
+    new(Dialog, dialog('Cómo preparar')),
+    send(Dialog, size, size(300, 150)),
+    new(TextoPlanta, text_item('Nombre de la planta')),  % Initialize text item widget
+    new(BotonBuscar, button('Buscar', message(@prolog, buscar_y_mostrar_preparacion, TextoPlanta))),  % Pass text item widget as argument
+    send(Dialog, append, TextoPlanta),
+    send(Dialog, append, BotonBuscar),
+    send(Dialog, open).
+
+
+% Predicado para buscar y mostrar la preparación de la planta
+buscar_y_mostrar_preparacion(TextoPlanta) :-
+    get(TextoPlanta, selection, PlantaStr),
+    (   planta(PlantaStr) ->
+        buscar_preparacion(PlantaStr, Forma, Uso, Procedimiento),
+        mostrar_resultado_preparacion(PlantaStr, Forma, Uso, Procedimiento)
+    ;   send(@display, inform, 'Planta no encontrada')
+    ).
+
+% Predicado para mostrar el resultado de la preparación
+mostrar_resultado_preparacion(Planta, Forma, Uso, Procedimiento) :-
+    new(Dialog, dialog('Resultado')),
+    send(Dialog, size, size(400, 200)),
+    send(Dialog, append, new(LabelPlanta, label('Planta:', Planta))),
+    send(Dialog, append, new(LabelForma, label('Forma de preparación:', Forma))),
+    send(Dialog, append, new(LabelUso, label('Uso:', Uso))),
+    send(Dialog, append, new(LabelProcedimiento, label('Procedimiento:', Procedimiento))),
+    send(Dialog, open).
+
+
+% --------------- Mostrar botiquín  ---------------------(El boton botiquin)
+mostrar_botiquin :-
+    new(Dialog, dialog('Botiquin')),
+    send(Dialog, size, size(400, 400)),
+    findall(_, 
+        (planta(Planta), 
+         findall(Uso, uso(Planta, Uso), Usos), 
+         atomic_list_concat(Usos, ', ', UsosStr),
+         send(Dialog, append, new(Label, label(Planta, Planta))),
+         send(Dialog, append, new(Txt, text_item('', UsosStr))),
+         send(Label, alignment, center),
+         send(Txt, editable, @off)
+        ), 
+        _),
+    send(Dialog, open).
+
+% ------------------------ Mostrar ventana de propiedades --------------------------(Boton de propiedades)
+mostrar_ventana_propiedades :-
+    new(VentanaPropiedades, dialog('Propiedades de las plantas')),
+    new(BotonMostrarPropiedadesUna, button('Mostrar propiedades de una en específico', message(@prolog, mostrar_propiedades_una))),
+    new(BotonMostrarListado, button('Mostrar listado de todas las plantas', message(@prolog, mostrar_listado))),
+    send(VentanaPropiedades, append, BotonMostrarPropiedadesUna),
+    send(VentanaPropiedades, append, BotonMostrarListado),
+    send(VentanaPropiedades, open).
+
+
+% ----------------------- Definición de la ventana para mostrar formas de preparación  ---------------- (boton formas e preparacion)
+mostrar_formas_preparacion :-
+    new(Dialog, dialog('Formas de Preparación')),
+    send(Dialog, size, size(500, 500)),
+    findall(_, 
+        (forma_preparacion(Forma, Descripcion),
+         uso_preparacion(Forma, Uso),
+         procedimiento(Forma, Procedimiento),
+         send(Dialog, append, new(Label, label(Forma, Forma))),
+         send(Dialog, append, new(TxtDescripcion, text_item('Descripcion', Descripcion))),
+         send(Dialog, append, new(TxtUso, text_item('Uso', Uso))),
+         send(Dialog, append, new(TxtProcedimiento, text_item('Procedimiento', Procedimiento))),
+         send(Label, alignment, center),
+         send(TxtDescripcion, editable, @off),
+         send(TxtUso, editable, @off),
+         send(TxtProcedimiento, editable, @off)
+        ), 
+        _),
+    send(Dialog, open).
+    
+    
+% Predicados para manejar las acciones de los nuevos botones   ----(boton dentro de ventana de boton de %% Propiedades  > buscar una en especifico %%)
+mostrar_propiedades_una :-
+    % Aquí debes implementar la lógica para mostrar propiedades de una planta específica
+    new(Ventana, dialog('Mostrar propiedades de una planta')),
+    new(TextoPlanta, text_item('Nombre de la planta')),
+    new(BotonBuscar, button('Buscar', message(@prolog, buscar_propiedades, TextoPlanta?selection))),
+    send(Ventana, append, TextoPlanta),
+    send(Ventana, append, BotonBuscar),
+    send(Ventana, open).
+
+
+buscar_propiedades(Planta) :-
+    propiedades_de_planta(Planta, Propiedades),
+    atomic_list_concat(Propiedades, ', ', PropStr),
+    new(Ventana, dialog('Propiedades de la planta')),
+    send(Ventana, append, label(nombre, Planta)),
+    send(Ventana, append, text_item('Propiedades', PropStr)),
+    send(Ventana, open).
+
+mostrar_listado :-   %% ----------------- hacer que se puestren en un solo cuadro -------------
+    % Mostrar listado de todas las plantas y sus propiedades
+    findall(Planta-Propiedad, planta_propiedad(Planta, Propiedad), ListaPlantas),
+    new(VentanaListado, dialog('Listado de todas las plantas')),
+    mostrar_lista_plantas(VentanaListado, ListaPlantas),
+    send(VentanaListado, open).
+
+mostrar_lista_plantas(_, []).
+mostrar_lista_plantas(Ventana, [Planta-Propiedad | Resto]) :-
+    send(Ventana, append, text_item(Planta, Propiedad)),
+    mostrar_lista_plantas(Ventana, Resto).
+
+% Regla para obtener las propiedades de una planta
+propiedades_de_planta(Planta, Propiedades) :-
+    findall(Propiedad, planta_propiedad(Planta, Propiedad), Propiedades).
+
+% Regla para obtener las plantas con una propiedad específica
+plantas_con_propiedad(Propiedad, Plantas) :-
+    findall(Planta, planta_propiedad(Planta, Propiedad), Plantas).
 
 % Iniciar con una planta seleccionada
 iniciar_con_planta(Tipo) :-
